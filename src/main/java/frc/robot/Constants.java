@@ -15,5 +15,24 @@ package frc.robot;
 public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
+    public static final int kMechControllerPort = 1;
+
+    public static final double encoderTicksPerFoot = 7416;//7827;//7230;//7057//5460.0; //push the robot forward one foot and take the average of the two encoder distances
+    public static final double absoluteMaxVelocity = 0.0; //use encoder ticks per foot, and using the robot, set it to the max speed on both wheels and see how many encoder ticks it goes forward
+    //then using the encoder ticks per foot calculation, calculate its absolute Max Velocity [Units: Feet/Second]
+    public static final double absoluteMaxAcceleration = 0.0;//[Units:(delta feet/seconds)/seconds
+    //just see how many seconds it takes to go from 0 to 100% speed and divide the absolute max velocity by that number of seconds
+    public static final double absoluteMaxOmega = 0.0;//use the gyro and set one motor to 100% and the other to -100% [Units: Radians/Second]
+    public static final double absoluteMaxAlpha = 0.0;
+
+    public static final double STEER_SCALAR = 1.15;
+    public static final double POSRANGE_MAX_ACCEL = 0.02;//0.03;//0.08;
+    public static final double NEGRANGE_MAX_ACCEL = 0.03;//0.02;//0.03;
+    public static final double MAX_DECEL = 0.03;//0.04;//0.06;
+    public static final double MAX_VELOCITY = 50000f;//45000f; //28000 //39000 // 34,000 // 39,000
+
+    public static final double velocitykP = 0.0000125;// velocity stuff probably not needed at all and should keep 0
+    public static final double velocitykI = 0.0;
+    public static final double velocitykD = 0.0000008;
   }
 }
