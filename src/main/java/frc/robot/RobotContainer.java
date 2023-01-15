@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.Constants.OperatorConstants;
@@ -12,8 +13,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Autos;
 import frc.robot.commands.Drive.ArcadeDrive;
+import frc.robot.commands.Intake.DropIntake;
+import frc.robot.subsystems.Intake;
 
 
 
@@ -27,8 +31,12 @@ import frc.robot.commands.Drive.ArcadeDrive;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final Drivetrain m_robotDrive = new Drivetrain();
+  private final Intake m_intake = new Intake();
   private static OperatorConstants constants;
   private ArcadeDrive arcadeDrive;
+
+  public Button[] driverButtons = new Button[10];
+  public Button[] driverPOVButtons = new Button[4];
 
   private final SendableChooser<String> m_autoChooser = new SendableChooser<>();
 
@@ -39,7 +47,7 @@ public class RobotContainer {
    //m_autoChooser.addOption("4 ball", Auto_4Ball);
 
     initialize_Subsystems();
-    //configureBindings();
+    //configureButtonBindings();
   }
 
   /**
@@ -52,15 +60,17 @@ public class RobotContainer {
    * joysticks}.
    */
 
- // private void configureBindings() {
+  private void configureButtonBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-
     
-  //}
+    
+  }
 
   public void initialize_Subsystems(){
     m_robotDrive.setDefaultCommand(
           new ArcadeDrive(m_robotDrive, m_driverController::getLeftY, m_driverController::getLeftX));
+
+    //m_intake.setDefaultCommand(new DropIntake(m_intake, ));
   }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

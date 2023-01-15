@@ -34,5 +34,9 @@ public final class Constants {
     public static final double velocitykP = 0.0000125;// velocity stuff probably not needed at all and should keep 0
     public static final double velocitykI = 0.0;
     public static final double velocitykD = 0.0000008;
+
+    public static final double TIME_INTERVAL = 0.005f;
+    public static final double UP_TARGET = 0;
+    public static final double DOWN_TARGET = 500;
   }
 }
