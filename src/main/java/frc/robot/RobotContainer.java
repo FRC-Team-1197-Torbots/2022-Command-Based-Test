@@ -7,17 +7,14 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.Constants.OperatorConstants;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.Autos;
-import frc.robot.commands.Drive.ArcadeDrive;
-import frc.robot.commands.Intake.DropIntake;
-import frc.robot.subsystems.Intake;
+import frc.robot.commands.ArcadeDrive;
+import frc.robot.subsystems.DriveTrain;
+
 
 
 
@@ -30,24 +27,22 @@ import frc.robot.subsystems.Intake;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Drivetrain m_robotDrive = new Drivetrain();
-  private final Intake m_intake = new Intake();
-  private static OperatorConstants constants;
-  private ArcadeDrive arcadeDrive;
+  private final DriveTrain DriveTrainSubsystem;
+  private final ArcadeDrive arcadeDrive;
 
-  public Button[] driverButtons = new Button[10];
-  public Button[] driverPOVButtons = new Button[4];
-
-  private final SendableChooser<String> m_autoChooser = new SendableChooser<>();
-
-  static XboxController m_driverController = new XboxController(constants.kDriverControllerPort);
+  public static XboxController player1;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-   //m_autoChooser.addOption("4 ball", Auto_4Ball);
+    DriveTrainSubsystem = new DriveTrain();
+    arcadeDrive = new ArcadeDrive(DriveTrainSubsystem);
 
-    initialize_Subsystems();
-    //configureButtonBindings();
+    player1 = new XboxController(0);
+
+    DriveTrainSubsystem.setDefaultCommand(arcadeDrive);
+
+    //initialize_Subsystems();
+    configureButtonBindings();
   }
 
   /**
@@ -66,21 +61,15 @@ public class RobotContainer {
     
   }
 
-  public void initialize_Subsystems(){
-    m_robotDrive.setDefaultCommand(
-          new ArcadeDrive(m_robotDrive, m_driverController::getLeftY, m_driverController::getLeftX));
-
-    //m_intake.setDefaultCommand(new DropIntake(m_intake, ));
-  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  /* 
+  
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return m_autoChooser.getSelected();
+    return arcadeDrive;
   }
-  */
+  
 }

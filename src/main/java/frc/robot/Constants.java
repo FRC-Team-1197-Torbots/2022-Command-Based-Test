@@ -13,7 +13,18 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-  public static class OperatorConstants {
+  public static class DriveTrainConstants {
+    /***********************
+     *        CAN IDs      *
+     ***********************/
+    public static final int Left1ID = 1;
+    public static final int Left2ID = 2;
+    public static final int LeftFlippedID = 3;
+
+    public static final int Right1ID = 13;
+    public static final int Right2ID = 14;
+    public static final int RightFlippedID = 15;
+  } 
     public static final int kDriverControllerPort = 0;
     public static final int kMechControllerPort = 1;
 
@@ -25,6 +36,10 @@ public final class Constants {
     public static final double absoluteMaxOmega = 0.0;//use the gyro and set one motor to 100% and the other to -100% [Units: Radians/Second]
     public static final double absoluteMaxAlpha = 0.0;
 
+    /********************************
+     *     TELEOP DRIVE CONSTANTS   *
+     ********************************/
+  public static class TeleopDriveConstants {
     public static final double STEER_SCALAR = 1.15;
     public static final double POSRANGE_MAX_ACCEL = 0.02;//0.03;//0.08;
     public static final double NEGRANGE_MAX_ACCEL = 0.03;//0.02;//0.03;
@@ -33,10 +48,11 @@ public final class Constants {
 
     public static final double velocitykP = 0.0000125;// velocity stuff probably not needed at all and should keep 0
     public static final double velocitykI = 0.0;
-    public static final double velocitykD = 0.0000008;
+    public static final double velocitykD = 0;//0.0000008;
 
     public static final double TIME_INTERVAL = 0.005f;
     public static final double UP_TARGET = 0;
     public static final double DOWN_TARGET = 500;
   }
 }
+
