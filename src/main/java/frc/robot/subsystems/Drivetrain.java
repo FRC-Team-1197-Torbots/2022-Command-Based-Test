@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
 
-public class DriveTrain extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
   private final CANSparkMax Right1;	
 	private final CANSparkMax Right2;
 	private final CANSparkMax RightFlipped;
@@ -27,7 +27,7 @@ public class DriveTrain extends SubsystemBase {
 
   private final ADXRS450_Gyro gyro;
   /** Creates a new ExampleSubsystem. */
-  public DriveTrain() {
+  public Drivetrain() {
     gyro = new ADXRS450_Gyro();
 
     Left1 = new CANSparkMax(DriveTrainConstants.Left1ID, MotorType.kBrushless);

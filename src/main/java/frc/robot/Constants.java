@@ -25,6 +25,23 @@ public final class Constants {
     public static final int Right2ID = 14;
     public static final int RightFlippedID = 15;
   } 
+
+  public static class IntakeConstants{
+    /***********************
+     *      Intake IDs     *
+     *                     *
+     ***********************/
+    public static final int IntakeID = 4;
+    public static final int RollerID = 11;
+
+    public static final double UP_TARGET = 0;
+    public static final double DOWN_TARGET = 500;
+
+    public static final double IntakekP = 0.001;//0.00075;
+    public static final double IntakekI = 0;
+    public static final double IntakekD = 0;//0.0000062;
+  }
+
     public static final int kDriverControllerPort = 0;
     public static final int kMechControllerPort = 1;
 

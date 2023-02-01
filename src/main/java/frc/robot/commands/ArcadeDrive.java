@@ -6,14 +6,14 @@ package frc.robot.commands;
 
 import frc.robot.RobotContainer;
 import frc.robot.Constants.TeleopDriveConstants;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
 public class ArcadeDrive extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final DriveTrain driveSubsystem;
+  private final Drivetrain driveSubsystem;
 
   private double throttle;
   private double steer;
@@ -46,7 +46,7 @@ public class ArcadeDrive extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ArcadeDrive(DriveTrain driveSubsystem) {
+  public ArcadeDrive(Drivetrain driveSubsystem) {
     this.driveSubsystem = driveSubsystem;
     pidDrive = new PIDController(TeleopDriveConstants.velocitykP, TeleopDriveConstants.velocitykI, TeleopDriveConstants.velocitykD);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -150,11 +150,11 @@ public class ArcadeDrive extends CommandBase {
   }
 
 public double getRightVelocity() {
-  return DriveTrain.rightEncoder.getRate();
+  return Drivetrain.rightEncoder.getRate();
 }
 
 public double getLeftVelocity() {
-  return -DriveTrain.leftEncoder.getRate();
+  return -Drivetrain.leftEncoder.getRate();
 }
 
 

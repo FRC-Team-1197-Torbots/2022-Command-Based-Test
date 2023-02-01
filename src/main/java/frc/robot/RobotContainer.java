@@ -13,7 +13,9 @@ import edu.wpi.first.wpilibj2.command.RamseteCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ArcadeDrive;
-import frc.robot.subsystems.DriveTrain;
+import frc.robot.commands.MoveIntake;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Intake;
 
 
 
@@ -27,19 +29,26 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final DriveTrain DriveTrainSubsystem;
+  private final Drivetrain DriveTrainSubsystem;
+  private final Intake IntakeSubsystem;
   private final ArcadeDrive arcadeDrive;
+  private final MoveIntake moveIntake;
 
   public static XboxController player1;
+  public static XboxController player2;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    DriveTrainSubsystem = new DriveTrain();
+    DriveTrainSubsystem = new Drivetrain();
     arcadeDrive = new ArcadeDrive(DriveTrainSubsystem);
+    IntakeSubsystem = new Intake();
+    moveIntake = new MoveIntake(IntakeSubsystem);
 
     player1 = new XboxController(0);
+    player2 = new XboxController(1);
 
     DriveTrainSubsystem.setDefaultCommand(arcadeDrive);
+    IntakeSubsystem.setDefaultCommand(moveIntake);
 
     //initialize_Subsystems();
     configureButtonBindings();
