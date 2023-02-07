@@ -4,11 +4,13 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveTrainConstants;
@@ -25,10 +27,12 @@ public class Drivetrain extends SubsystemBase {
   public static Encoder leftEncoder;
   public static Encoder rightEncoder;
 
-  private final ADXRS450_Gyro gyro;
+  //private final ADXRS450_Gyro gyro;
+  private final AHRS NavX;
   /** Creates a new ExampleSubsystem. */
   public Drivetrain() {
-    gyro = new ADXRS450_Gyro();
+    //gyro = new ADXRS450_Gyro();
+    NavX = new AHRS(SPI.Port.kMXP);
 
     Left1 = new CANSparkMax(DriveTrainConstants.Left1ID, MotorType.kBrushless);
 		Left2 = new CANSparkMax(DriveTrainConstants.Left2ID, MotorType.kBrushless);
@@ -66,7 +70,7 @@ public class Drivetrain extends SubsystemBase {
 
 	// Method to reset the spartan board gyro values
 	public void resetGyro() {
-		gyro.reset(); 
+		NavX.reset();
 	}
 
   public void setMotorSpeeds(double leftSpeed, double rightSpeed){
